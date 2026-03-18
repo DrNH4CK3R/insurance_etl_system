@@ -18,7 +18,6 @@ Here is a breakdown of why I structured the code the way I did:
 * **Object-Oriented Validation:** Data rules (like checking for negative premium amounts or empty policy IDs) are separated into individual classes using inheritance. If a row fails, the pipeline logs a warning and skips the row without crashing the entire system.
 * **Safe Database Connections:** I used a Python Context Manager (`__enter__` and `__exit__`) for the MySQL connection. If the program crashes halfway through reading a file, the context manager guarantees the database connection is closed and any partial, corrupted inserts are rolled back.
 * **Staging to Master Architecture:** The SQL script (`report.sql`) doesn't just dump data. It loads data into a raw `staging` table first, uses `INSERT IGNORE` to safely move unique records to a `master` table, and then truncates staging. This makes the pipeline idempotent (you can run it 100 times without duplicating data).
-* **Advanced SQL:** Included a reporting view utilizing Window Functions (`DENSE_RANK()`) to analyze regional claim data.
 
 ## 📂 Project Structure
 
