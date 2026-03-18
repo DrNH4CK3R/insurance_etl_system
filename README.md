@@ -22,7 +22,8 @@ Here is a breakdown of why I structured the code the way I did:
 
 ## 📂 Project Structure
 
-`insurance_etl_system/
+```text
+insurance_etl_system/
 ├── config/
 │   └── db_config.py       # Fetches credentials from environment variables
 ├── data/
@@ -38,24 +39,38 @@ Here is a breakdown of why I structured the code the way I did:
 ├── .env                   # Local database credentials (ignored by git)
 ├── main.py                # The single entry point to run the pipeline
 ├── report.sql             # Schema and analytics queries
-└── requirements.txt`
+└── requirements.txt
+```
 
 ## 🚀 How to Run Locally
 
-1. Clone the repository
-`git clone [https://github.com/yourusername/insurance-etl-pipeline.git](https://github.com/yourusername/insurance-etl-pipeline.git)
-cd insurance-etl-pipeline`
+**1. Clone the repository**
+```bash
+git clone https://github.com/yourusername/insurance-etl-pipeline.git
+cd insurance-etl-pipeline
+```
 
-2. Install dependencies
-`pip install -r requirements.txt`
+**2. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
 
-3. Set up your environment variables
-Create a file named .env in the root directory and add your MySQL credentials:
+**3. Set up your environment variables**
+Create a file named `.env` in the root directory and add your MySQL credentials:
+```text
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=insurance_db
+```
 
-4. Add data
-Place any messy insurance data CSV files into the data/incoming/ folder.
+**4. Add data**
+Place any messy insurance data CSV files into the `data/incoming/` folder. 
 
-5. Run the pipeline
-`python main.py`
+**5. Run the pipeline**
+```bash
+python main.py
+```
 
-Check the logs/etl_process.log file to see exactly how the system handled the data!
+Check the `logs/etl_process.log` file to see exactly how the system handled the data!
